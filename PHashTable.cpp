@@ -23,6 +23,6 @@ void PHashTable::remove(string key, long long hash) {
 
 int PHashTable::get_data(string key, long long hash) {
     int i = 0;
-    while (this->nodes[(hash+i)%MAX_N].key != key && this->nodes[(hash+i)%MAX_N].key.length() != 0) i++;
+    while (this->nodes[(hash+i)%MAX_N].key != key && i > MAX_N) i++;
     return this->nodes[(hash+i)%MAX_N].occurences;
 }
