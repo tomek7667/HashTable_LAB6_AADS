@@ -1,14 +1,16 @@
 #include <iostream>
 #include "PHashTable.h"
+#include "SCHashTable.h"
 #include "HashGenerator.h"
 #include <string>
+
 
 using namespace std;
 
 
 int main() {
     string input;
-    PHashTable H = PHashTable();
+    SCHashTable H = SCHashTable();
     long long hash;
     while (cin >> input) {
         if (input.length() > 0) {

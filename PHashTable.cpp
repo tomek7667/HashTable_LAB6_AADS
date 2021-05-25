@@ -4,7 +4,7 @@
 
 #include "PHashTable.h"
 #include <iostream>
-
+#define MAX_N 100001
 void PHashTable::insert(string key, long long hash) {
     int i = 0;
     while (this->nodes[(hash+i)%MAX_N]->key != key && i <= MAX_N) i++;

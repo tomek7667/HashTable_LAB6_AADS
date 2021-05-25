@@ -5,6 +5,7 @@
 #include "HashGenerator.h"
 #define MAX_N 100001
 #include <iostream>
+
 HashGenerator::HashGenerator(const std::string& s) {
     long long kv = 0;
     for (int i = 0; i < s.length(); i++) {
