@@ -12,24 +12,19 @@ int main() {
     long long hash;
     while (cin >> input) {
         if (input.length() > 0) {
-            switch (input[0]) {
-                case '?':
-                    input.erase(0, 1);
-                    hash = HashGenerator(input).hash;
-                    cout << H.get_data(input, hash) << endl;
-                    break;
-                case '-':
-                    input.erase(0, 1);
-                    hash = HashGenerator(input).hash;
-                    H.remove(input, hash);
-                    break;
-                case 'q':
-                    if (input.length() == 1) return 1;
-                    break;
-                default:
-                    hash = HashGenerator(input).hash;
-                    H.insert(input, hash);
-                    break;
+            if (input[0] == '?') {
+                input.erase(0, 1);
+                hash = HashGenerator(input).hash;
+                cout << H.get_data(input, hash) << endl;
+            } else if (input[0] == '-') {
+                input.erase(0, 1);
+                hash = HashGenerator(input).hash;
+                H.remove(input, hash);
+            } else if (input[0] == 'q' && input.length() == 1) {
+                return 1;
+            } else {
+                hash = HashGenerator(input).hash;
+                H.insert(input, hash);
             }
         }
     }

@@ -10,7 +10,7 @@ HashGenerator::HashGenerator(const std::string& s) {
     for (int i = 0; i < s.length(); i++) {
         if (s[i] >= 'a' && s[i] <= 'z') {
             int digit = s[i] - 'a' + 1;
-            kv += digit * digit * i + digit^i*3;
+            kv += digit * digit * i + digit^(i*3);
         }
     }
     this->hash = (kv % MAX_N);
