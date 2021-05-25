@@ -3,4 +3,4 @@ project(HaszTejbul)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(HaszTejbul main.cpp HashTable.cpp HashTable.h Key.cpp Key.h)
+add_executable(HaszTejbul main.cpp HashGenerator.cpp HashGenerator.h PHashTable.cpp PHashTable.h)
