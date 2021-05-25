@@ -3,25 +3,26 @@
 //
 
 #include "PHashTable.h"
+#include <iostream>
 
 void PHashTable::insert(string key, long long hash) {
     int i = 0;
-    while (this->nodes[hash+i].key != key && this->nodes[hash+i].key.length() != 0) i++;
-    this->nodes[hash+i].key = key;
-    this->nodes[hash+i].occurences++;
-    this->nodes[hash+i].hash = hash;
+    while (this->nodes[(hash+i)%MAX_N].key != key && this->nodes[(hash+i)%MAX_N].key.length() != 0) i++;
+    this->nodes[(hash+i)%MAX_N].key = key;
+    this->nodes[(hash+i)%MAX_N].occurences++;
+    this->nodes[(hash+i)%MAX_N].hash = hash;
 }
 
 void PHashTable::remove(string key, long long hash) {
     int i = 0;
-    while (this->nodes[hash+i].key != key && this->nodes[hash+i].key.length() != 0) i++;
-    this->nodes[hash+i].key = "";
-    this->nodes[hash+i].occurences = 0;
-    this->nodes[hash+i].hash = 0;
+    while (this->nodes[(hash+i)%MAX_N].key != key && this->nodes[(hash+i)%MAX_N].key.length() != 0) i++;
+    this->nodes[(hash+i)%MAX_N].key = "";
+    this->nodes[(hash+i)%MAX_N].occurences = 0;
+    this->nodes[(hash+i)%MAX_N].hash = 0;
 }
 
 int PHashTable::get_data(string key, long long hash) {
     int i = 0;
-    while (this->nodes[hash+i].key != key && this->nodes[hash+i].key.length() != 0) i++;
-    return this->nodes[hash+i].occurences;
+    while (this->nodes[(hash+i)%MAX_N].key != key && this->nodes[(hash+i)%MAX_N].key.length() != 0) i++;
+    return this->nodes[(hash+i)%MAX_N].occurences;
 }
