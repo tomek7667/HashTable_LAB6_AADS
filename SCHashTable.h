@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 #include "HashGenerator.h"
-#define MAX_N 26
+#define MAX_N 1024
 using namespace std;
 
 struct HNode {
@@ -24,6 +24,18 @@ struct HNode {
         this->free = false;
         this->key = std::move(k);
     }
+    ~HNode() {
+        if (this->next != nullptr) {
+            HNode * temp = this->next;
+            while (temp->next != nullptr) {
+                temp = temp->next;
+            }
+            while (temp->prev != nullptr) {
+                temp = temp->prev;
+                delete temp->next;
+            }
+        }
+    }
 };
 
 class SCHashTable {
@@ -33,6 +45,7 @@ public:
     void insert(string key, long long hash);
     void remove(string key, long long hash);
     int get_data(string key, long long hash);
+    ~SCHashTable();
 };
 
 

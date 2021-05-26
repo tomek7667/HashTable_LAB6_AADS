@@ -1,10 +1,7 @@
 #include <iostream>
-#include "PHashTable.h"
+
 #include "SCHashTable.h"
-#include "HashGenerator.h"
 #include <string>
-
-
 using namespace std;
 
 

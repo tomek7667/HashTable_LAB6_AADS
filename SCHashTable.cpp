@@ -54,3 +54,9 @@ int SCHashTable::get_data(string key, long long int hash) {
     if (temp->key == key) return temp->occurences;
     return 0;
 }
+
+SCHashTable::~SCHashTable() {
+    for (int i = 0; i < MAX_N; i++) {
+        delete this->nodes[i];
+    }
+}
